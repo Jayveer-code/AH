@@ -1,6 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render,get_object_or_404
-from store.models import  Product,Categories,Filter_Price
+from django.shortcuts import render,redirect,get_object_or_404
+from store.models import  Product,Categories,Filter_Price,contact_us
 
 def Main(request):
      product = Product.objects.filter(status='PUBLISH')
@@ -21,6 +21,21 @@ def CheckoutPage(request):
     return render(request,'checkout.html')
 
 def ContactPage(request):
+    if request.method=='POST':
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        subject=request.POST.get('subject')
+        message=request.POST.get('message')
+
+        contact=contact_us(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message,
+        )
+        contact.save()
+        return redirect('HomePage')
+
     return render(request,'contact.html')
 
 def AboutPage(request):

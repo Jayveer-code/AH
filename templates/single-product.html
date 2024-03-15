@@ -10,13 +10,15 @@
                         <!-- Swiper -->
                         <div class="swiper-container zoom-top">
                             <div class="swiper-wrapper">
-                               
+                                {% for i in prod.images_set.all %}
                                 <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="/media/{{prod.image}}" alt="">
-                                    <a class="venobox full-preview" data-gall="myGallery" href="/media/{{prod.image}}">
+                                    <img class="img-responsive m-auto" src="/media/{{i.image}}" alt="">
+                                    <a class="venobox full-preview" data-gall="myGallery" href="/media/{{i.image}}">
+                                        
                                         <i class="fa fa-arrows-alt" aria-hidden="true"></i>
                                     </a>
                                 </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="swiper-container mt-20px zoom-thumbs slider-nav-style-1 small-nav">

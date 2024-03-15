@@ -9,6 +9,7 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ImageInline]
 
 admin.site.register(images)
+admin.site.register(contact_us)
 admin.site.register(Categories)
 admin.site.register(SubCategories)
 admin.site.register(Filter_Price)

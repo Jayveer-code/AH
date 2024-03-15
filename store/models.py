@@ -54,3 +54,14 @@ class Product(models.Model):
 class images(models.Model):
     image=models.ImageField(upload_to='news/')        
     product=models.ForeignKey(Product, on_delete=models.CASCADE,default=1)
+
+
+class contact_us(models.Model):
+    name=models.CharField(max_length=100)
+    email=models.EmailField(max_length=100)
+    subject=models.CharField(max_length=200)
+    message=models.TextField()    
+    date=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
